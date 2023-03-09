@@ -39,3 +39,17 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+import Greeter from './svelte/Greeter.svelte'
+
+window.onload = async function () {
+    const targetId = 'Greeter';
+    const target = document.getElementById(targetId);
+
+    if (!target) {
+        return;
+    }
+
+    let props = {};
+
+    const component = new Greeter({ target, props });
+}
