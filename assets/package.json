@@ -3,5 +3,10 @@
     "esbuild": "^0.17.11",
     "esbuild-svelte": "^0.7.3",
     "svelte": "^3.55.1"
+  },
+  "dependencies": {
+    "phoenix": "file:../deps/phoenix",
+    "phoenix_html": "file:../deps/phoenix_html",
+    "phoenix_live_view": "file:../deps/phoenix_live_view"
   }
 }
