@@ -25,7 +25,7 @@ config :hello, HelloWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "NY+BPO1EHvhYw+EHTwezCqaMIZiNERyceoGCU/CmCX597LfBp/ZA2CTHZoZSxQmy",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    node: ["build.js", "--watch", cd: Path.expand("../assets", __DIR__)],
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
