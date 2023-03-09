@@ -120,7 +120,9 @@ At this point we should be able to run our Phoenix application. From the project
 mix phx.server
 ```
 
-Now if we visit [http://localhost:4000](http://localhost:4000) we should be able to see the default Phoenix landing page.
+Now if we visit [http://localhost:4000](http://localhost:4000) we should be able to see the default Phoenix landing page:
+
+![Phoenix 1.7 default landing page](./doc/img/phoenix-1.7-landing-page.png)
 
 
 ---
@@ -265,7 +267,9 @@ window.onload = async function () {
 }
 ```
 
-At this point, if we restart our Phoenix server and reload [http://localhost:4000](http://localhost:4000), we should successfully see our Svelte component render properly.
+At this point, if we restart our Phoenix server and reload [http://localhost:4000](http://localhost:4000), we should successfully see our Svelte component render properly:
+
+![Hello, Phoenix](./doc/img/hello-phoenix.png)
 
 
 ### Phoenix, Tailwind and Svelte
@@ -290,8 +294,9 @@ module.exports = {
   ],
 ```
 
-After that, our Tailwind classes in our Svelte components should now work as before.
+After that, our Tailwind classes in our Svelte components should now work as before:
 
+![Hello, Phoenix (styled)](./doc/img/hello-phoenix-styled.png)
 
 ---
 
