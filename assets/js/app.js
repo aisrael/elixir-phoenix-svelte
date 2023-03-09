@@ -49,9 +49,13 @@ window.onload = async function () {
         return;
     }
 
-    let props = {
-        name: "Phoenix",
-    };
+    let props = {};
+    target.getAttributeNames()
+        .filter(attr => attr.startsWith("data-"))
+        .forEach(attr => {
+            const name = attr.substring(5);
+            props[name] = target.getAttribute(attr);
+        });
 
     const component = new Greeter({ target, props });
 }
