@@ -125,7 +125,7 @@ Now if we visit [http://localhost:4000](http://localhost:4000) we should be able
 
 ## Cybernetically Enhanced Phoenix
 
-Now we're ready to add [Svelte](https://svelte.dev) into the mix. The rest of this guide borrows from the following sources, but I try to be  less opinionated (than the Svonix framework) and have it slightly updated for Phoenix 1.7:
+Now we're ready to add [Svelte](https://svelte.dev) into the mix. The rest of this guide borrows from the following sources, but I try to be  less opinionated (than the Svonix framework) and have slightly updated it for Phoenix 1.7:
 
 - [E2E Reactivity using Svelte with Phoenix LiveView](https://dev.to/debussyman/e2e-reactivity-using-svelte-with-phoenix-liveview-38mf)
 - [Svonix - Svelte & Phoenix > 1.6 - easily create and use Svelte components in Phoenix](https://elixirforum.com/t/svonix-svelte-phoenix-1-6-easily-create-and-use-svelte-components-in-phoenix/45222)
