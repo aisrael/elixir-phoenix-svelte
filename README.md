@@ -1,4 +1,4 @@
-Phoenix 1.7 with Svelte
+Getting Started with Phoenix 1.7 with Svelte
 ====
 ### Cybernetically enhanced Phoenix Web applications
 
@@ -15,9 +15,7 @@ More compellingly, it promises a more pleasant developer experience by reducing 
 
 There must be something to it, as it was voted the [most loved Web framework in 2021](https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-web-frameworks), and in 2022, [it came only second to Elixir's Phoenix](https://survey.stackoverflow.co/2022/#section-most-loved-dreaded-and-wanted-web-frameworks-and-technologies)!
 
-So it's just natural that we try to use both of them together.
-
-Let's get started!
+So it's just natural that we try to use both of them together. Let's get started!
 
 
 ### Prerequisites
@@ -31,14 +29,12 @@ To follow along, you will need (with versions as of this writing):
 - git
 - [Docker](https://www.docker.com) with Docker Compose
 
-> Note: If using Ubuntu, the best way to get the latest version of Node.js is by using nvm, not by using the default node provided by the apt package manager, which tends to install a much older version of Node.
-
 
 ---
 
 ## Hello, Phoenix
 
-For those already familiar with setting up a Phoenix project, you may wish to skip to the next section.
+> For those already familiar with setting up a Phoenix project, you may wish to skip to the next section.
 
 Let's go ahead and generate our starter Phoenix project:
 
@@ -97,7 +93,7 @@ services:
       POSTGRES_DB: hello_dev
 ```
 
-Note that we configure PostgreSQL (using the `POSTRES_*` environment variables) to work with the generated Phoenix app defaults.
+Note that we configure PostgreSQL (using the `POSTGRES_*` environment variables) to work with the generated Phoenix app defaults.
 
 Then, to run Postgres in the background you only need to go:
 
@@ -129,7 +125,7 @@ Now if we visit [http://localhost:4000](http://localhost:4000) we should be able
 
 ## Cybernetically Enhanced Phoenix
 
-Now we're ready to add [Svelte](https://svelte.dev) to our project. The rest of this guide borrows from the following sources, but I try to be  less opinionated (than the Svonix framework) and have slightly it updated for Phoenix 1.7:
+Now we're ready to add [Svelte](https://svelte.dev) into the mix. The rest of this guide borrows from the following sources, but I try to be  less opinionated (than the Svonix framework) and have it slightly updated for Phoenix 1.7:
 
 - [E2E Reactivity using Svelte with Phoenix LiveView](https://dev.to/debussyman/e2e-reactivity-using-svelte-with-phoenix-liveview-38mf)
 - [Svonix - Svelte & Phoenix > 1.6 - easily create and use Svelte components in Phoenix](https://elixirforum.com/t/svonix-svelte-phoenix-1-6-easily-create-and-use-svelte-components-in-phoenix/45222)
@@ -149,9 +145,9 @@ We need to point to the Phoenix package libraries so esbuild will be able to com
 
 ### Write a custom build script
 
-Phoenix 1.6 switched to [esbuild](https://esbuild.github.io/), but esbuild doesn't support Svelte out of the box, so we'll have to [write a custom build script](https://hexdocs.pm/phoenix/asset_management.html#esbuild-plugins) to make use of the [esbuild-svelte](https://www.npmjs.com/package/esbuild-svelte) plugin.
+Phoenix 1.6 switched to [esbuild](https://esbuild.github.io/), but esbuild doesn't support Svelte out of the box. To make esbuild work with Svelte, we'll have to [write a custom build script](https://hexdocs.pm/phoenix/asset_management.html#esbuild-plugins) and use the [esbuild-svelte](https://www.npmjs.com/package/esbuild-svelte) plugin.
 
-Create the following file assets/build.js:
+Create the following file `assets/build.js`:
 
 ```js
 const esbuild = require('esbuild')
@@ -246,7 +242,7 @@ with just:
 
 Now we need a way for our `app.js` entrypoint to replace that `div` with our Svelte component.
 
-We won't be as opinionated as Svonix, nor will we attempt to integrate Svelte with LiveView at this point, so we'll just use a `window.onload()` function to mount our component by hand.
+Since we're just getting started, for simplicity let's just use a `window.onload()` function to mount our component by hand.
 
 In `assets/js/app.js`, add the following lines toward the end:
 
@@ -276,7 +272,7 @@ At this point, if we restart our Phoenix server and reload [http://localhost:400
 
 You might notice, however, that the "Hello, Phoenix!" text is styled differently from before.
 
-This is because [Phoenix 1.7 now has Tailwind built-in](https://medium.com/r/?url=https%3A%2F%2Fphoenixframework.org%2Fblog%2Fphoenix-1.7-final-released), and Tailwind will only include classes that it 'sees' in the output `.css` file. 
+This is because [Phoenix 1.7 now has Tailwind built-in](https://medium.com/r/?url=https%3A%2F%2Fphoenixframework.org%2Fblog%2Fphoenix-1.7-final-released), and Tailwind will only include classes that it can 'see' in the CSS. 
 
 When we moved our CSS classes from `home.html.heex` to `Greeter.svelte`, the default Tailwind configuration that Phoenix uses couldn't detect the classes in Greeter.svelte.
 
