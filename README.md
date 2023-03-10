@@ -1,4 +1,4 @@
-Getting Started with Phoenix 1.7 with Svelte
+Getting Started with Phoenix 1.7 and Svelte
 ====
 ### Cybernetically enhanced Phoenix Web applications
 
