@@ -40,8 +40,10 @@ liveSocket.connect()
 window.liveSocket = liveSocket
 
 import Greeter from './svelte/Greeter.svelte'
+import Cards from './svelte/Cards.svelte'
 
 window.onload = async function () {
+    console.log("onload: Greeter");
     const targetId = 'Greeter';
     const target = document.getElementById(targetId);
 
@@ -58,4 +60,24 @@ window.onload = async function () {
         });
 
     const component = new Greeter({ target, props });
+}
+
+window.onload = async function () {
+    console.log("onload: Cards");
+    const targetId = 'Cards';
+    const target = document.getElementById(targetId);
+
+    if (!target) {
+        return;
+    }
+
+    let props = {};
+    target.getAttributeNames()
+        .filter(attr => attr.startsWith("data-"))
+        .forEach(attr => {
+            const name = attr.substring(5);
+            props[name] = target.getAttribute(attr);
+        });
+
+    const component = new Cards({ target, props });
 }
