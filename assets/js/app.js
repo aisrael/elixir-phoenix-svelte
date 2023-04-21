@@ -22,8 +22,50 @@ import { Socket } from "phoenix"
 import { LiveSocket } from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
+import Greeter from './svelte/Greeter.svelte'
+import Cards from './svelte/Cards.svelte'
+
+export const GreeterHook = {
+    async mounted() {
+        let props = {}
+        this.el.getAttributeNames().filter(attr => attr.startsWith("data-"))
+            .forEach(attr => {
+                const name = attr.substring(5);
+                props[name] = this.el.getAttribute(attr)
+            })
+        this._instance = new Greeter({
+            target: this.el,
+            props
+        })
+    },
+
+    destroyed() {
+        this._instance?.$destroy()
+    },
+}
+
+export const CardsHook = {
+    async mounted() {
+        let props = {}
+        this.el.getAttributeNames().filter(attr => attr.startsWith("data-"))
+            .forEach(attr => {
+                const name = attr.substring(5);
+                props[name] = this.el.getAttribute(attr)
+            })
+        this._instance = new Cards({
+            target: this.el,
+            props
+        })
+    },
+
+    destroyed() {
+        this._instance?.$destroy()
+    },
+}
+
+
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, { params: { _csrf_token: csrfToken } })
+let liveSocket = new LiveSocket("/live", Socket, { params: { _csrf_token: csrfToken }, hooks: { GreeterHook, CardsHook } })
 
 // Show progress bar on live navigation and form submits
 topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" })
@@ -38,29 +80,3 @@ liveSocket.connect()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
-
-import Greeter from './svelte/Greeter.svelte'
-import Cards from './svelte/Cards.svelte'
-
-function mountSvelteComponent(targetId, component) {
-    const target = document.getElementById(targetId);
-
-    if (!target) {
-        return;
-    }
-
-    let props = {};
-    target.getAttributeNames()
-        .filter(attr => attr.startsWith("data-"))
-        .forEach(attr => {
-            const name = attr.substring(5);
-            props[name] = target.getAttribute(attr);
-        });
-
-    const instance = new component({ target, props });
-}
-
-window.onload = async function () {
-    mountSvelteComponent("Greeter", Greeter);
-    mountSvelteComponent("Cards", Cards);
-}

@@ -52,13 +52,13 @@
         v<%= Application.spec(:phoenix, :vsn) %>
       </small>
     </h1>
-    <div id="Greeter" data-name="Phoenix" />
+    <div phx-hook="GreeterHook" phx-update="ignore" id="Greeter" data-name="Phoenix" />
     <p class="mt-4 text-base leading-7 text-zinc-600">
       Build rich, interactive web applications quickly, with less code and fewer moving parts. Join our growing community of developers using Phoenix to craft APIs, HTML5 apps and more, for fun or at scale.
     </p>
     <div class="flex">
       <div class="w-full sm:w-auto">
-        <div id="Cards">
+        <div phx-hook="CardsHook" phx-update="ignore" id="Cards">
           <a
             href="https://hexdocs.pm/phoenix/overview.html"
             class="group relative rounded-2xl px-6 py-4 text-sm font-semibold leading-6 text-zinc-900 sm:py-6"
