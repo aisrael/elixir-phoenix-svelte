@@ -41,26 +41,3 @@ window.liveSocket = liveSocket
 
 import Greeter from './svelte/Greeter.svelte'
 import Cards from './svelte/Cards.svelte'
-
-function mountSvelteComponent(targetId, component) {
-    const target = document.getElementById(targetId);
-
-    if (!target) {
-        return;
-    }
-
-    let props = {};
-    target.getAttributeNames()
-        .filter(attr => attr.startsWith("data-"))
-        .forEach(attr => {
-            const name = attr.substring(5);
-            props[name] = target.getAttribute(attr);
-        });
-
-    const instance = new component({ target, props });
-}
-
-window.onload = async function () {
-    mountSvelteComponent("Greeter", Greeter);
-    mountSvelteComponent("Cards", Cards);
-}

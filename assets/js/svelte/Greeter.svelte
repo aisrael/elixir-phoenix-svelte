@@ -1,7 +1,11 @@
+<svelte:options tag="svelte-greeter" />
+
 <script>
     export let name;
 </script>
 
-<p class="mt-4 text-4xl font-semibold leading-10 tracking-tighter text-zinc-900">
+<p
+    class="mt-4 text-4xl font-semibold leading-10 tracking-tighter text-zinc-900"
+>
     Hello, {name}!
 </p>
