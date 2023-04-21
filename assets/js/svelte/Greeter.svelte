@@ -1,5 +1,3 @@
-<svelte:options tag="svelte-greeter" />
-
 <script>
     export let name;
 </script>

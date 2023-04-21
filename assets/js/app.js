@@ -39,5 +39,9 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
-import Greeter from './svelte/Greeter.svelte'
-import Cards from './svelte/Cards.svelte'
+import Greeter from "./svelte/Greeter.svelte"
+import Cards from "./svelte/Cards.svelte"
+import component from "svelte-tag"
+
+new component({ component: Greeter, tagname: "svelte-greeter", attributes: ["name"] });
+new component({ component: Cards, tagname: "svelte-cards" });
