@@ -41,10 +41,11 @@ if (deploy) {
         ...opts,
         minify: true
     }
+    esbuild.build(opts).catch(() => process.exit(1))
+} else {
+    esbuild.context(opts).then(context => {
+        if (watch) {
+            context.watch()
+        }
+    })
 }
-
-esbuild.context(opts).then(context => {
-    if (watch) {
-        context.watch()
-    }
-})
